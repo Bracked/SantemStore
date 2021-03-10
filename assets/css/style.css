@@ -24,6 +24,22 @@
 
 @font-face {
     font-family: "Montserrat";
+  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: "Montserrat";
+  src: url("../fonts/Montserrat-BoldItalic.woff2") format("woff2"), url("../Montserrat-Bold.woff") format("woff");
+  font-weight: 700;
+  font-display: swap;
+  font-style: italic;
+}
+
+@font-face {
+    font-family: "Montserrat";
   src: url("../fonts/Montserrat-ExtraBold.woff2") format("woff2"), url("../Montserrat-ExtraBold.woff") format("woff");
   font-weight: 700;
   font-display: swap;
@@ -50,22 +66,6 @@
     font-family: "Montserrat";
   src: url("../fonts/Montserrat-ExtraLightItalic.woff2") format("woff2"), url("../Montserrat-ExtraLight.woff") format("woff");
   font-weight: 200;
-  font-display: swap;
-  font-style: italic;
-}
-
-@font-face {
-    font-family: "Montserrat";
-  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../Montserrat-Bold.woff") format("woff");
-  font-weight: 700;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-    font-family: "Montserrat";
-  src: url("../fonts/Montserrat-BoldItalic.woff2") format("woff2"), url("../Montserrat-Bold.woff") format("woff");
-  font-weight: 700;
   font-display: swap;
   font-style: italic;
 }
@@ -104,16 +104,16 @@
 
 @font-face {
     font-family: "Montserrat";
-  src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../Montserrat-Regular.woff") format("woff");
-  font-weight: 400;
+  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../Montserrat-SemiBold.woff") format("woff");
+  font-weight: 600;
   font-display: swap;
   font-style: normal;
 }
 
 @font-face {
     font-family: "Montserrat";
-  src: url("../fonts/Montserrat-RegularItalic.woff2") format("woff2"), url("../Montserrat-Regular.woff") format("woff");
-  font-weight: 400;
+  src: url("../fonts/Montserrat-SemiBoldItalic.woff2") format("woff2"), url("../Montserrat-SemiBold.woff") format("woff");
+  font-weight: 600;
   font-display: swap;
   font-style: italic;
 }
@@ -136,16 +136,16 @@
 
 @font-face {
     font-family: "Montserrat";
-  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../Montserrat-SemiBold.woff") format("woff");
-  font-weight: 600;
+  src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../Montserrat-Regular.woff") format("woff");
+  font-weight: 400;
   font-display: swap;
   font-style: normal;
 }
 
 @font-face {
     font-family: "Montserrat";
-  src: url("../fonts/Montserrat-SemiBoldItalic.woff2") format("woff2"), url("../Montserrat-SemiBold.woff") format("woff");
-  font-weight: 600;
+  src: url("../fonts/Montserrat-RegularItalic.woff2") format("woff2"), url("../Montserrat-Regular.woff") format("woff");
+  font-weight: 400;
   font-display: swap;
   font-style: italic;
 }
@@ -250,6 +250,19 @@ h6 {
     width: 100%;
     min-height: 100vh;
     overflow-x: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.convex {
+    -webkit-box-shadow: inset -8px -6px 14px 2px #f9ffff, inset 8px 6px 18px 2px #c9cfd5;
+    box-shadow: inset -8px -6px 14px 2px #f9ffff, inset 8px 6px 18px 2px #c9cfd5;
+    background-color: #edf4fa;
 }
 
 .btn-reset {
@@ -663,6 +676,12 @@ h6 {
     transition: transform 150ms ease-out, -webkit-transform 150ms ease-out;
 }
 
+.link-follow {
+    font-weight: 700;
+    font-size: 18px;
+    color: #0f3076;
+}
+
 .link-readmore {
     font-weight: 600;
     font-size: 15px;
@@ -682,10 +701,10 @@ h6 {
     position: relative;
 }
 
-.link-container .list-wrapper {
-    padding-top: 20px;
+.link-container .link-wrapper--down,
+.link-container .link-wrapper--up {
+    padding: 25px 0;
     position: absolute;
-    top: 0;
     left: 0;
     width: 300px;
     visibility: hidden;
@@ -695,7 +714,16 @@ h6 {
     transition: opacity 250ms;
 }
 
+.link-container .link-wrapper--down {
+    top: 0;
+}
+
+.link-container .link-wrapper--up {
+    bottom: 0;
+}
+
 .link-container ul {
+    background-color: #fff;
     padding: 10px 0;
     border-radius: 15px;
     border: 2px solid #edf4fa;
@@ -710,7 +738,8 @@ h6 {
     background-color: #edf4fa;
 }
 
-.link-container:hover .list-wrapper {
+.link-container:hover .link-wrapper--down,
+.link-container:hover .link-wrapper--up {
     visibility: visible;
     opacity: 1;
 }
@@ -726,9 +755,9 @@ h6 {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
 }
 
 .contact > * + *,
@@ -749,6 +778,22 @@ h6 {
     margin-bottom: 9px;
 }
 
+.navigation {
+    cursor: pointer;
+}
+
+.navigation__list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
 html {
     font-size: 62.5%;
     scroll-behavior: smooth;
@@ -765,6 +810,8 @@ body {
 
 .header {
     padding: 22px 0;
+    background-color: #fff;
+    border-bottom: 2px solid #ccdae6;
 }
 
 .header__up {
@@ -777,6 +824,7 @@ body {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+    margin-bottom: 40px;
 }
 
 .header__logo {
@@ -796,4 +844,41 @@ body {
     -ms-flex-pack: justify;
     justify-content: space-between;
     width: 80%;
+}
+
+.header__down {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.header__navigation {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 85%;
+    flex: 0 1 85%;
+}
+
+.search {
+    max-width: 30px;
+    max-height: 30px;
+}
+
+.search svg {
+    max-width: 100%;
+    fill: #0f3076;
+}
+
+.footer {
+    margin-top: auto;
+    border-top: 2px solid #ccdae6;
+}
+
+.footer__navigation {
+    padding: 23px 0;
 }
